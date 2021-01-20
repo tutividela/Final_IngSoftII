@@ -23,9 +23,7 @@ EffectTest >> testAtomicBombWhenNoLapsWereDone [
 	dice := Die of: 6 rolling: #(6 4). 
 		
 	aBoard := Board withNoEffectOfLength: 10.
-	aBoard with: SpeedUp new at: 2.
-	aBoard with: WormHole new at: 3.
-	aBoard with: (MoonWalk withRecoil: 5) at: 4.
+
 	aBoard with: AtomicBomb new at: 5.
 								
 	game := Game playedBy: {tomas . exequiel} throwing: dice on: aBoard during: 2.

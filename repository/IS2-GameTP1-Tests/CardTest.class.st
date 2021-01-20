@@ -18,6 +18,11 @@ CardTest >> setUp [
 ]
 
 { #category : #tests }
+CardTest >> test01ReverseCard [
+
+]
+
+{ #category : #tests }
 CardTest >> testAccelerationAndOverloadTogether [
 	| game aBoard dice accelerationCard overloadCard |
 
@@ -62,10 +67,6 @@ CardTest >> testAccelerationAndSpeedTogether [
 	dice := Die of: 6 rolling:#(6 2).	
 		
 	aBoard := Board withNoEffectOfLength: 10.
-	aBoard with: AtomicBomb new at: 4.
-	aBoard with: WormHole new at: 6.
-	aBoard with: Take randomCard at: 7.
-	aBoard with: (MoonWalk withRecoil: 5) at: 9.
 							
 	accelerationCard := Card type: Acceleration new .
 	speedCard := Card type: Speed new .
@@ -100,10 +101,6 @@ CardTest >> testAccelerationCard [
 	dice := Die of: 6 rolling:#(6 6).	
 		
 	aBoard := Board withNoEffectOfLength: 10.
-	aBoard with: AtomicBomb new at: 4.
-	aBoard with: WormHole new at: 6.
-	aBoard with: Take randomCard at: 7.
-	aBoard with: (MoonWalk withRecoil: 5) at: 9.
 	
 	accelerationCard := Card type: Acceleration new .
 	
@@ -209,10 +206,6 @@ CardTest >> testCumulativeAccelerationCard [
 	dice := Die of: 6 rolling:#(6 6).	
 
 	aBoard := Board withNoEffectOfLength: 10.
-	aBoard with: AtomicBomb new at: 4.
-	aBoard with: WormHole new at: 6.
-	aBoard with: Take randomCard at: 7.
-	aBoard with: (MoonWalk withRecoil: 5) at: 9.
 							
 	accelerationCard1 := Card type: Acceleration new .
 	accelerationCard2 := Card type: Acceleration new .
@@ -245,10 +238,6 @@ CardTest >> testCumulativeOverloadCard [
 	dice := Die of: 6 rolling:#(6 2 1 4).	
 		
 	aBoard := Board withNoEffectOfLength: 10.
-	aBoard with: AtomicBomb new at: 4.
-	aBoard with: WormHole new at: 6.
-	aBoard with: Take randomCard at: 7.
-	aBoard with: (MoonWalk withRecoil: 5) at: 9.
 	
 	overloadCard1 := Card type: Overload new .
 	overloadCard2 := Card type: Overload new .
@@ -282,10 +271,6 @@ CardTest >> testCumulativeSpeedCard [
 	dice := Die of: 6 rolling:#(3 2).	
 		
 	aBoard := Board withNoEffectOfLength: 10.
-	aBoard with: AtomicBomb new at: 4.
-	aBoard with: WormHole new at: 6.
-	aBoard with: Take randomCard at: 7.
-	aBoard with: (MoonWalk withRecoil: 5) at: 9.
 	
 	speedCard1 := Card type: Speed new .
 	speedCard2 := Card type: Speed new .
@@ -319,8 +304,6 @@ CardTest >> testNestedRedoCard [
 	dice := Die of: 6 rolling:#(5).	
 
 	aBoard := Board withNoEffectOfLength: 10.
-	aBoard with: Take randomCard at: 7.
-	aBoard with: (MoonWalk withRecoil: 5) at: 9.
 							
 	speedCard := Card type: Speed new .
 	redoCard1 := Card type: Redo new .
@@ -368,10 +351,6 @@ CardTest >> testOverloadCard [
 	dice := Die of: 6 rolling:#(6 2 1 4 2 1).
 	
 	aBoard := Board withNoEffectOfLength: 10.
-	aBoard with: AtomicBomb new at: 4.
-	aBoard with: WormHole new at: 6.
-	aBoard with: Take randomCard at: 7.
-	aBoard with: (MoonWalk withRecoil: 5) at: 9.
 		
 	overloadCard := Card type: Overload new .
 	
@@ -425,10 +404,7 @@ CardTest >> testPlayerGetsANewCard [
 	dice := Die of: 6 rolling: #(6). 
 
 	aBoard := Board withNoEffectOfLength: 10.
-	aBoard with: SpeedUp  new at: 2.
-	aBoard with: (MoonWalk withRecoil: 5) at: 3.
-	aBoard with: AtomicBomb new at: 4.
-	aBoard with: WormHole new at: 6.
+
 	aBoard with: Take randomCard at: 7.
 
 	game := Game playedBy: {exequiel . tomas} throwing: dice on: aBoard during: 2.
@@ -460,9 +436,6 @@ CardTest >> testRedoCard [
 	dice := Die of: 6 rolling:#(5).	
 
 	aBoard := Board withNoEffectOfLength: 10.
-	aBoard with: AtomicBomb new at: 4.
-	aBoard with: Take randomCard at: 7.
-	aBoard with: (MoonWalk withRecoil: 5) at: 9.
 	
 	card := Card type: Acceleration  new .
 	redoCard := Card type: Redo new .
@@ -533,7 +506,7 @@ CardTest >> testRedoCardAsRepeatCard [
 	aBoard := Board withNoEffectOfLength: 10.
 	aBoard with: SpeedUp new at: 2.
 	aBoard with: Take randomCard at: 7.
-	aBoard with: (MoonWalk withRecoil: 5) at: 9.	
+	aBoard with: (MoonWalk withRecoil: 5) at: 9.
 
 	redoCard := Card type: Redo new .
 	repeatCard := Card type: Repeat new .
@@ -569,9 +542,6 @@ CardTest >> testRedoCardIfNoOneHasPlayedACardYet [
 	dice := Die of: 6 rolling:#(5).	
 		
 	aBoard := Board withNoEffectOfLength: 10.
-	aBoard with: AtomicBomb new at: 4.
-	aBoard with: Take randomCard at: 7.
-	aBoard with: (MoonWalk withRecoil: 5) at: 9.
 							
 	redoCard := Card type: Redo new .
 
@@ -598,7 +568,6 @@ CardTest >> testRepeatCard [
 	aBoard with: SpeedUp new at: 4.
 	aBoard with: Take randomCard at: 6.
 	aBoard with: WormHole new at: 7.
-	aBoard with: (MoonWalk withRecoil: 5) at: 9.
 
 	repeatCard1 := Card type: Repeat new .
 	repeatCard2 := Card type: Repeat new .
@@ -658,10 +627,6 @@ CardTest >> testRepeatCardWithNoEffect [
 	dice := Die of: 6 rolling:#(1).	
 		
 	aBoard := Board withNoEffectOfLength: 10.
-	aBoard with: SpeedUp new at: 4.
-	aBoard with: WormHole new at: 6.
-	aBoard with: Take randomCard at: 7.
-	aBoard with: (MoonWalk withRecoil: 5) at: 9.
 					
 	repeatCard := Card type: Repeat new .
 	
@@ -688,10 +653,6 @@ CardTest >> testSpeedAndOverloadTogether [
 	dice := Die of: 6 rolling:#(6 2 1 4).	
 
 	aBoard := Board withNoEffectOfLength: 10.
-	aBoard with: AtomicBomb new at: 4.
-	aBoard with: WormHole new at: 6.
-	aBoard with: Take randomCard at: 7.
-	aBoard with: (MoonWalk withRecoil: 5) at: 9.
 	
 	speedCard := Card type: Speed new .
 	overloadCard := Card type: Overload new .
@@ -727,10 +688,6 @@ CardTest >> testSpeedCard [
 		
 		
 	aBoard := Board withNoEffectOfLength: 10.
-	aBoard with: AtomicBomb new at: 4.
-	aBoard with: WormHole new at: 6.
-	aBoard with: Take randomCard at: 7.
-	aBoard with: (MoonWalk withRecoil: 5) at: 9.
 	
 	speedCard := Card type: Speed new .
 	
