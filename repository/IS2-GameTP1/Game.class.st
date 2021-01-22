@@ -38,9 +38,10 @@ Game >> activateThis: card from: player to: aPlayerOrCard [
 	(card isPermanent and: [ player ~= self whoPlays ])
 		ifTrue: [ Error
 				signal: 'A player wants to play a permanent card on another turn.' ]
-		ifFalse: [ player plays: card.
-			card applyTo: aPlayerOrCard in: self.
-			lastCardPlayed := card ]
+		ifFalse: [ 
+				self applyTheCard: card from:player  to: aPlayerOrCard
+				].
+		
 ]
 
 { #category : #accesing }
@@ -58,6 +59,13 @@ Game >> amountOfMovesFor: aPlayer withThis: rollResult [
 	(afterRollingPosition > (Position of: aPlayer  at: 0 with: laps))
 				ifTrue:  [ ^ board remainingSquaresFor: aPlayer ] 
 				ifFalse: [ ^ total ].
+]
+
+{ #category : #private }
+Game >> applyTheCard: aCard from: aPlayer to:aPlayerOrCard [
+	aPlayer plays: aCard.
+	aCard applyTo: aPlayerOrCard in: self.
+	lastCardPlayed := aCard.
 ]
 
 { #category : #cards }
@@ -161,6 +169,11 @@ Game >> players [
 { #category : #cards }
 Game >> removeThis: activePermanentCard [
 	activePermanentCards remove: activePermanentCard ifAbsent: [Error signal: 'Permanent card not active.'].
+]
+
+{ #category : #cards }
+Game >> reverseTurns [
+	players := CircularIterator cyclingOver: players options reversed .
 ]
 
 { #category : #accesing }
