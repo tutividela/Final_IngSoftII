@@ -132,7 +132,7 @@ Board >> goToTheSquareOf: aPlayer [
 		].
 ]
 
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 Board >> initializeWith: listOfSquares [
 	squares := CircularIterator cyclingOver: listOfSquares.
 ]

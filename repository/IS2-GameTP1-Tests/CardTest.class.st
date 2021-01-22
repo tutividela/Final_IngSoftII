@@ -29,10 +29,6 @@ CardTest >> testAccelerationAndOverloadTogether [
 	dice := Die of: 6 rolling:#(6 1 1 4).
 		
 	aBoard := Board withNoEffectOfLength: 10.
-	aBoard with: AtomicBomb new at: 4.
-	aBoard with: WormHole new at: 6.
-	aBoard with: Take randomCard at: 7.
-	aBoard with: (MoonWalk withRecoil: 5) at: 9.
 
 	accelerationCard := Card type: Acceleration new .
 	overloadCard := Card type: Overload new .

@@ -35,9 +35,9 @@ Game class >> playedBy: aSetOfPlayer throwing: dices onBoardOfLength: aNumberOfS
 { #category : #cards }
 Game >> activateThis: card from: player to: aPlayerOrCard [
 	self assertCardsCanBePlayed.
-	
 	(card isPermanent and: [ player ~= self whoPlays ])
-		ifTrue: [ Error signal: 'A player wants to play a permanent card on another turn.' ]
+		ifTrue: [ Error
+				signal: 'A player wants to play a permanent card on another turn.' ]
 		ifFalse: [ player plays: card.
 			card applyTo: aPlayerOrCard in: self.
 			lastCardPlayed := card ]
