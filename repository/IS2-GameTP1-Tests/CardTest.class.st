@@ -93,8 +93,8 @@ CardTest >> test03NestedReverseCard [
 	
 	aGame := Game playedBy: {tomas.marcos.exequiel.pedro } throwing:dice  on:aNoEffectBoard  during: 3.
 	
-	aGame playNextTurn .
-	aGame playNextTurn .
+	aGame playNextTurn ;playNextTurn .
+	
 	
 	self assert: aGame whoPlays equals: exequiel.
 	
@@ -107,6 +107,20 @@ CardTest >> test03NestedReverseCard [
 	aGame currentPlayerActivatesThis: aReverseCard to:tomas.
 	
 	self assert: aGame whoPlays equals: pedro. 
+]
+
+{ #category : #tests }
+CardTest >> test04SkipCard [
+	| aNoEffectBoard dice marcos pedro  aGame  |
+	aNoEffectBoard := Board withNoEffectOfLength: 10.
+	dice := Die of: 6 rolling:#(6).
+	
+	marcos := Player named: 'Marcos'.
+	pedro := Player named: 'Pedro'.
+	
+	aGame := Game playedBy: {tomas.marcos.exequiel.pedro } throwing:dice  on:aNoEffectBoard  during: 3.
+	"aca en skip deberia utilizar 'aGame players' para hacer el 'players next ' "
+
 ]
 
 { #category : #tests }
