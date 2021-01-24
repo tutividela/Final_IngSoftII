@@ -65,10 +65,9 @@ CardTest >> test02RedoAndReverseCard [
 	aGame := Game playedBy: {tomas.marcos.exequiel.pedro } throwing:dice  on:aNoEffectBoard  during: 3.
 	
 	aGame currentPlayerActivatesThis: aReverseCard to: tomas.
-		 
-	aGame playNextTurn. ";playNextTurn ."
-		"self assert: aGame whoPlays equals: marcos.
-		aGame activateThis: aRedoCard  from:exequiel   to: tomas."
+	self assert: aGame whoPlays equals: pedro.		 
+	aGame playNextTurn.
+
 	aGame currentPlayerActivatesThis: aRedoCard to: exequiel.
 	
 	aGame playNextTurn .
@@ -79,7 +78,7 @@ CardTest >> test02RedoAndReverseCard [
 
 { #category : #tests }
 CardTest >> test03NestedReverseCard [
-	"| aNoEffectBoard dice marcos pedro aReverseCard anotherReverseCard aGame |
+	| aNoEffectBoard dice marcos pedro aReverseCard anotherReverseCard aGame |
 	aNoEffectBoard := Board withNoEffectOfLength: 10.
 	dice := Die of: 6 rolling:#(6).
 	
@@ -94,17 +93,20 @@ CardTest >> test03NestedReverseCard [
 	
 	aGame := Game playedBy: {tomas.marcos.exequiel.pedro } throwing:dice  on:aNoEffectBoard  during: 3.
 	
-	aGame playNextTurn ; playNextTurn .
+	aGame playNextTurn .
+	aGame playNextTurn .
+	
+	self assert: aGame whoPlays equals: exequiel.
 	
 	aGame currentPlayerActivatesThis: anotherReverseCard to:exequiel.
-	
+
 	self assert: aGame whoPlays equals: marcos.
 	
 	aGame playNextTurn.
 	
 	aGame currentPlayerActivatesThis: aReverseCard to:tomas.
 	
-	self assert: aGame whoPlays equals: tomas. "
+	self assert: aGame whoPlays equals: pedro. 
 ]
 
 { #category : #tests }

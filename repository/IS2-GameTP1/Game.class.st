@@ -173,7 +173,10 @@ Game >> removeThis: activePermanentCard [
 
 { #category : #cards }
 Game >> reverseTurns [
+	| actualIndex |
+	actualIndex := players currentIndex.
 	players := CircularIterator cyclingOver: players options reversed .
+	actualIndex timesRepeat: [players next]. 
 ]
 
 { #category : #accesing }

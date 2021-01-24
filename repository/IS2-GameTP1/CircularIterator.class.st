@@ -29,6 +29,11 @@ CircularIterator >> current [
 	^options at: currentIndex + 1
 ]
 
+{ #category : #accessing }
+CircularIterator >> currentIndex [
+	^currentIndex copy.
+]
+
 { #category : #testing }
 CircularIterator >> includes: anObject [
 	^options includes: anObject  
