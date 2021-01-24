@@ -72,7 +72,7 @@ CardTest >> test02RedoAndReverseCard [
 	
 	aGame playNextTurn .
 	
-	self assert: aGame whoPlays equals: marcos. 
+	self assert: aGame whoPlays equals: exequiel. 
 
 ]
 
